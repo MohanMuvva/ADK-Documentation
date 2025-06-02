@@ -1,4 +1,5 @@
-Simple Guide to Google's Agent Development Kit (ADK)
+**Simple Guide to Google's Agent Development Kit (ADK)**
+
 What is ADK?
 Google's Agent Development Kit (ADK) is a tool that helps developers build smart, task-solving programs called "agents." These agents can understand instructions, use tools like web search or databases, and make decisions in a step-by-step, safe way. ADK makes it easier to build reliable and secure AI systems for things like customer service, education, and more.
 ________________________________________
