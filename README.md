@@ -50,26 +50,24 @@ ________________________________________
 
 
 Why Choose ADK Over Others?
-Feature	ADK	LangChain	LangGraph	CrewAI
-Clear Workflows---	✅ Yes	❌ No	⚠️ Somewhat	❌ No
-Error Checking	---✅ Yes	⚠️ Some plugins	⚠️ Some plugins	❌ No
-Step-by-Step Control----	✅ Yes	❌ No	✅ Yes	❌ No
-Easy to Debug	----✅ Yes	❌ No	⚠️ Moderate	❌ No
-Cloud Ready	---✅ Yes	⚠️ Varies	⚠️ Early Stage	⚠️ Early Stage
+
 🔍 Real-Life Example: Weather Info Agent
 ADK Style:
 •	Ask for the city name
 •	Call a weather API
 •	Return a clear result
 •	Always knows what step it’s on
+
 LangChain Style:
 •	Ask the LLM to decide what tool to use and how to reply
 •	May change behavior each time
+
 CrewAI Style:
 •	Assign a goal like "Get the weather"
 •	Let the AI figure out how to do it
 ADK is like a train on tracks — it’s safe and predictable.
 Other frameworks are like self-driving cars — flexible, but sometimes unpredictable.
+
 ________________________________________
 MCP Compatibility
 ADK works with Model Context Protocol (MCP). That means it follows standard rules to:
@@ -77,6 +75,7 @@ ADK works with Model Context Protocol (MCP). That means it follows standard rule
 •	Show what tools are available
 •	Share inputs and outputs in a consistent format
 This helps ADK talk to tools like Google Gemini, and other future-ready models.
+
 ________________________________________
 What Are Agent Schemas?
 Think of schemas like blueprints. They describe:
@@ -99,6 +98,7 @@ You can:
 •	Reuse other agents as tools
 def fetch_weather(location):
     return {"temperature": 75, "condition": "Sunny"}
+
 ________________________________________
 Downsides of ADK (What to Watch Out For)
 1.	Takes Time to Learn: You need to understand how state machines and schemas work.
