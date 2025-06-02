@@ -83,6 +83,15 @@ ________________________________________
 
 Why Choose ADK Over Others?
 
+Feature		         ADK        LangChain           LangGraph	        CrewAI
+Clear Workflows	     ✅ Yes	    ❌ No	            ⚠️ Somewhat	        ❌ No
+Error Checking	     ✅ Yes	    ⚠️ Some plugins	    ⚠️ Some plugins	    ❌ No
+Step-by-Step Control ✅ Yes	    ❌ No	            ✅ Yes	            ❌ No
+Easy to Debug	     ✅ Yes	    ❌ No	            ⚠️ Moderate        	❌ No
+Cloud Ready	         ✅ Yes	    ⚠️ Varies	        ⚠️ Early Stage	    ⚠️ Early Stage
+
+
+
 🔍 Real-Life Example: Weather Info Agent
 
 ADK Style:
