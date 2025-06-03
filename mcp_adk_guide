@@ -1,0 +1,150 @@
+# Complete Guide to Model Context Protocol (MCP) and Agent Development Kit (ADK)
+
+---
+
+## Page 1: Introduction to Agentic AI and MCP
+
+### What is Agentic AI?
+Agentic AI is the next evolution of artificial intelligence where models aren't just passive tools answering questions—they're active problem-solvers. They can plan tasks, interact with tools (like calendars, databases, or APIs), and make decisions step-by-step. Think of them like AI coworkers rather than simple chatbots.
+
+### Why This Guide?
+Today’s AI often operates in silos. Want your chatbot to check inventory or pull customer data? You need custom integrations every time. This is slow, inefficient, and hard to scale. That’s where **Model Context Protocol (MCP)** comes in.
+
+### What is MCP?
+MCP is a universal language created by Anthropic in 2024 to help AI models talk to external systems—like APIs, databases, tools—easily and securely. It replaces the need for custom connectors with a single standard, like using one remote control for all your devices.
+
+---
+
+## Page 2: Understanding MCP - The Building Blocks
+
+### Why Was MCP Needed?
+Before MCP:
+- Each AI model needed its own custom connection to each tool
+- Developers faced the MxN problem (N tools x M models = chaos)
+- AI responses lacked real-time awareness
+
+With MCP:
+- One AI can talk to any tool that supports MCP
+- Tools are reusable and discoverable
+- AI agents become smarter and more flexible
+
+### How Does MCP Work?
+- **Standard Language:** JSON-RPC 2.0
+- **Communication Channels:** HTTP or Server-Sent Events (SSE)
+- **Plug-and-play Tools:** Tools are exposed via MCP Servers
+
+### Core MCP Components
+- **MCP Server:** The host for tools (e.g., memory, fetch, time)
+- **SDKs:** Provided in Python and TypeScript
+- **Smithery.ai:** Public registry where tools are published and discovered
+
+### Where to Explore MCP Servers?
+Visit [Smithery.ai](https://smithery.ai) to browse available MCP servers. Some examples include:
+- **Fetch:** Pulls live web content for LLMs
+- **Filesystem:** Access files with permissions
+- **Memory:** Persistent context store using knowledge graphs
+- **Time:** Handles date and timezone operations
+- **Toolbox MCP:** Dynamically routes to any tool on Smithery
+
+---
+
+## Page 3: Real Advantages of Using MCP
+
+### 1. Solves the Interconnectivity Problem
+Traditionally: Connect AI to 10 tools = 10 integrations  
+With MCP: Just 1 integration for the AI and 1 for each tool
+
+### 2. Enables Tool Discovery in Real Time
+Agents can ask, “What tools are available?” and pick the best one at runtime.
+
+### 3. Boosts Collaboration Between Agents
+Agents can share a common context, call each other, and divide tasks like a team.
+
+### 4. Improves AI Accuracy
+With access to real data and tools, hallucinations (AI making up answers) decrease.
+
+### 5. Open and Extensible
+Because it’s open-source and technology-agnostic, any developer can build MCP tools or servers that work with any model.
+
+---
+
+## Page 4: MCP Tool Types Explained
+
+### Tool Types
+1. **Code Interpreter**: Run calculations, generate plots, or clean data  
+2. **OpenAPI Tools**: Call external APIs like Stripe, GitHub, Weather API  
+3. **Data Store Tools**: Query structured/unstructured data (like PDFs, FAQs)  
+4. **Connector Tools**: Integrate with Google Connectors (Salesforce, BigQuery)  
+5. **Function Tools**: Perform client-side tasks (used in apps or UIs)
+
+### Use Case Example
+Imagine a customer support agent:
+- Uses Data Store to understand policy documents
+- Uses OpenAPI to file a support ticket
+- Uses Connector Tool to update Salesforce
+
+All this happens seamlessly in one conversation.
+
+### Source References
+- [Dialogflow CX Tool Documentation](https://cloud.google.com/dialogflow/cx/docs/concept/playbook/tool)  
+- [Smithery Registry](https://smithery.ai)  
+- [MCP GitHub Repositories](https://github.com/modelcontextprotocol)
+
+---
+
+## Page 5: Integrating MCP with Google ADK
+
+### What is ADK?
+Google’s **Agent Development Kit (ADK)** is a framework for building intelligent agents with decision-making workflows. It supports:
+- Sequential, parallel, or looped tasks
+- Calling tools like search, code execution
+- Multi-agent collaboration
+- Deployment across environments (local, Docker, Vertex AI)
+
+### How MCP Enhances ADK
+- **Standardized Access:** No need to hardcode every tool  
+- **Tool Discovery:** ADK agents can pull tools from an MCP Server dynamically  
+- **Real-Time Reasoning:** Agents use ReAct pattern (Reason → Action → Observe)  
+- **Examples:** An ADK agent accessing an MCP server to pull real-time product info from an eCommerce API
+
+### How to Integrate an MCP Server into ADK
+1. **Create your MCP Server** using `FastMCP` or TypeScript SDK  
+2. **Expose Tools** using decorators (e.g., `@mcp.tool` in Python)  
+3. **Run with SSE or HTTP** and deploy to local or cloud  
+4. **Connect in ADK Code**:
+   ```python
+   from adk.mcp import MCPToolset, SseServerParams
+   toolset = await MCPToolset.from_server(SseServerParams(uri="http://localhost:8001/sse"))
+   tools = await toolset.get_tools_async()
+   ```
+5. **Use with LLM Agent** in your ADK agent logic
+
+---
+
+## Page 6: Best Practices, Security, and Future Outlook
+
+### Best Practices
+- Write clear examples in Playbooks (better than overly strict instructions)  
+- Reference tools properly (${TOOL: tool_name})  
+- Use concise outputs to reduce latency  
+- Cache repetitive responses
+
+### Security Essentials
+- Use Service Accounts, Secret Manager for API keys  
+- Enable VPC and TLS for secure tool access  
+- Log everything for observability
+
+### The Future of MCP & ADK
+- **Multi-Agent Workflows:** AI agents will collaborate like teams  
+- **Multimodal Tools:** Tools for video, images, and audio coming soon  
+- **Unified Assistants:** Imagine a single AI helping you across apps, devices, and services
+
+### Final Thought
+MCP and ADK together create a new paradigm: where AI doesn’t just answer—it acts. This guide is your starting point to explore that future.
+
+---
+
+**Learn More:**
+- [Smithery.ai MCP Registry](https://smithery.ai)  
+- [Google Dialogflow CX and Playbooks](https://cloud.google.com/dialogflow/cx)  
+- [MCP GitHub Reference](https://github.com/modelcontextprotocol)
